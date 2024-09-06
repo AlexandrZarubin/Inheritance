@@ -101,18 +101,18 @@ namespace Academy
 			for (int i = 0;i < str1.Length;i++)
 			{
 				Console.WriteLine(str1[i]);
-            }
-            Console.WriteLine(delimiter);
+			}
+			Console.WriteLine(delimiter);
 
-            using (StreamReader sr=new StreamReader(filePatch))
+			using (StreamReader sr=new StreamReader(filePatch))
 			{
 				string str;
 				while((str = sr.ReadLine()) != null)
 				{
-                    Console.WriteLine(str);
-                }
+					Console.WriteLine(str);
+				}
 			}
-            Console.WriteLine(delimiter);
+			Console.WriteLine(delimiter);
 			
 			
 			//чтение для объектов
@@ -176,14 +176,6 @@ namespace Academy
 					}
 				}
 			}
-			//finally
-			//{
-			//	// Закрываем файл, если он был открыт
-			//	if (sr1 != null)
-			//	{
-			//		sr1.Close();
-			//	}
-			//}
 			Console.WriteLine(delimiter);
             Console.WriteLine(delimiter);
             foreach (var item in group2)
@@ -200,16 +192,16 @@ namespace Academy
 			using (FileStream fs = new FileStream(biFilePatch, FileMode.OpenOrCreate))
 			{
 				bf.Serialize(fs, group);
-                Console.WriteLine("Запечатали");
-            }
+				Console.WriteLine("Запечатали");
+			}
 			
 			Human[] DeGroup;
 			using (FileStream fs = new FileStream(biFilePatch, FileMode.Open))
 			{
 				DeGroup = (Human[])bf.Deserialize(fs);
-                Console.WriteLine("распечатали");
-            }
-           
+				Console.WriteLine("распечатали");
+			}
+
 			Console.WriteLine("===============================================");
             foreach (var item in DeGroup )
             {
