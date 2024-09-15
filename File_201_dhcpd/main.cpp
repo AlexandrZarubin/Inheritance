@@ -149,25 +149,24 @@ public:
     }
 };
 
-struct Foo
+struct F
 {
     int x, y;
 };
-struct Foo2
+struct F1
 {
     int x, y, z;
 };
-// Главная программа
+
 int main() {
-    // Создаем объект для обработки данных и запускаем процесс
     DhcpdProcessor dhcp("201 RAW.txt", "201.dhcpd.txt");
     dhcp.process();
 
     system("notepad 201.dhcpd.txt");
     
-    /*Foo* ptr_foo = new Foo{ 1,2 };
-    Foo2* ptr_foo2 = (Foo2*)(ptr_foo);
-    Foo2* ptr_foo3 = static_cast<Foo2*>(ptr_foo);
-    delete ptr_foo;*/
+    /*F* ptr_f = new F{ 1,2 };
+    F1* ptr_f1 = (F1*)(ptr_f);
+    F1* ptr_f2 = static_cast<F1*>(ptr_f);
+    delete ptr_f;*/
     return 0;
 }
