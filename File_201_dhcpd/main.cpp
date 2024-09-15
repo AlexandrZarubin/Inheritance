@@ -1,34 +1,34 @@
-#include <iostream>
+п»ї#include <iostream>
 #include <fstream>
 #include <string>
 
 using namespace std;
-// Класс для чтения файла
+// РљР»Р°СЃСЃ РґР»СЏ С‡С‚РµРЅРёСЏ С„Р°Р№Р»Р°
 class FileReader {
 private:
     ifstream inputFile;
 
 public:
-    // Открытие файла
+    // РћС‚РєСЂС‹С‚РёРµ С„Р°Р№Р»Р°
     FileReader(const string& fileName) 
     {
         inputFile.open(fileName);
         if (!inputFile.is_open()) 
         {
-            cerr << "Не удалось открыть файл для чтения: " << fileName << endl;
+            cerr << "РќРµ СѓРґР°Р»РѕСЃСЊ РѕС‚РєСЂС‹С‚СЊ С„Р°Р№Р» РґР»СЏ С‡С‚РµРЅРёСЏ: " << fileName << endl;
         }
     }
 
-    // Метод для проверки, открыт ли файл
+    // РњРµС‚РѕРґ РґР»СЏ РїСЂРѕРІРµСЂРєРё, РѕС‚РєСЂС‹С‚ Р»Рё С„Р°Р№Р»
     bool isOpen() const 
     {
         return inputFile.is_open();
     }
 
-    // Метод для чтения строки с IP и MAC-адресами
+    // РњРµС‚РѕРґ РґР»СЏ С‡С‚РµРЅРёСЏ СЃС‚СЂРѕРєРё СЃ IP Рё MAC-Р°РґСЂРµСЃР°РјРё
     bool readSTR(string& ip, string& mac) 
     {
-        // Проверяем, если поток успешно считал данные
+        // РџСЂРѕРІРµСЂСЏРµРј, РµСЃР»Рё РїРѕС‚РѕРє СѓСЃРїРµС€РЅРѕ СЃС‡РёС‚Р°Р» РґР°РЅРЅС‹Рµ
         if (inputFile >> ip >> mac) 
         {
             return true;  
@@ -40,7 +40,7 @@ public:
     }
 
 
-    // Закрытие файла
+    // Р—Р°РєСЂС‹С‚РёРµ С„Р°Р№Р»Р°
     void close() 
     {
         if (inputFile.is_open()) 
@@ -50,33 +50,33 @@ public:
     }
 };
 
-// Класс для записи данных в файл
+// РљР»Р°СЃСЃ РґР»СЏ Р·Р°РїРёСЃРё РґР°РЅРЅС‹С… РІ С„Р°Р№Р»
 class FileWriter 
 {
     ofstream outputFile;
 
 public:
-    // Открытие файла для записи
+    // РћС‚РєСЂС‹С‚РёРµ С„Р°Р№Р»Р° РґР»СЏ Р·Р°РїРёСЃРё
     FileWriter(const string& fileName) 
     {
         outputFile.open(fileName);
         if (!outputFile.is_open()) 
-            cerr << "Не удалось открыть файл для записи: " << fileName <<endl;
+            cerr << "РќРµ СѓРґР°Р»РѕСЃСЊ РѕС‚РєСЂС‹С‚СЊ С„Р°Р№Р» РґР»СЏ Р·Р°РїРёСЃРё: " << fileName <<endl;
     }
 
-    // Метод для проверки, открыт ли файл
+    // РњРµС‚РѕРґ РґР»СЏ РїСЂРѕРІРµСЂРєРё, РѕС‚РєСЂС‹С‚ Р»Рё С„Р°Р№Р»
     bool isOpen() const 
     {
         return outputFile.is_open();
     }
 
-    // Запись строки в файл
+    // Р—Р°РїРёСЃСЊ СЃС‚СЂРѕРєРё РІ С„Р°Р№Р»
     void writeSTR(const string& str) 
     {
         outputFile << str << endl;
     }
 
-    // Закрытие файла
+    // Р—Р°РєСЂС‹С‚РёРµ С„Р°Р№Р»Р°
     void close() {
         if (outputFile.is_open()) 
         {
@@ -85,11 +85,11 @@ public:
     }
 };
 
-// Класс для обработки данных
+// РљР»Р°СЃСЃ РґР»СЏ РѕР±СЂР°Р±РѕС‚РєРё РґР°РЅРЅС‹С…
 class DhcpdFormatter 
 {
 public:
-    // Метод для форматирования MAC-адреса (замена "-" на ":")
+    // (Р·Р°РјРµРЅР° "-" РЅР° ":")
     string formatMac(const string& mac) 
     {
         string formattedMac = mac;
@@ -101,7 +101,7 @@ public:
         return formattedMac;
     }
 
-    // Метод для генерации одной записи для файла dhcpd
+    // РњРµС‚РѕРґ РґР»СЏ  РѕРґРЅРѕР№ Р·Р°РїРёСЃРё РґР»СЏ С„Р°Р№Р»Р° dhcpd
     string generateDhcpdEntry(int hostNumber, const string& ip, const string& mac) 
     {
         string formattedMac = formatMac(mac);
@@ -113,7 +113,7 @@ public:
     }
 };
 
-// Класс для управления всем процессом
+// РљР»Р°СЃСЃ РґР»СЏ СѓРїСЂР°РІР»РµРЅРёСЏ РІСЃРµРј РїСЂРѕС†РµСЃСЃРѕРј
 class DhcpdProcessor 
 {
 private:
@@ -122,11 +122,11 @@ private:
     DhcpdFormatter formatter;
 
 public:
-    // Конструктор, инициализирующий читателя и писателя
+    // РљРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ, РёРЅРёС†РёР°Р»РёР·РёСЂСѓСЋС‰РёР№ С‡РёС‚Р°С‚РµР»СЏ Рё РїРёСЃР°С‚РµР»СЏ
     DhcpdProcessor(const string& inputFileName, const string& outputFileName)
         : reader(inputFileName), writer(outputFileName) {}
 
-    // Метод для выполнения всей обработки данных
+    // РњРµС‚РѕРґ РґР»СЏ РІС‹РїРѕР»РЅРµРЅРёСЏ РІСЃРµР№ РѕР±СЂР°Р±РѕС‚РєРё РґР°РЅРЅС‹С…
     void process() 
     {
         if (!reader.isOpen() || !writer.isOpen()) 
